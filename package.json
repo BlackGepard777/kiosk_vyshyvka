@@ -9,11 +9,15 @@
   },
   "dependencies": {
     "express": "^5.1.0",
+    "install": "^0.13.0",
     "nodemon": "^3.1.10",
+    "npm": "^11.6.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.9.4",
     "react-router-dom": "^7.9.4",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
     "tsx": "^4.20.6",
     "vite": "^7.1.10",
     "vite-express": "^0.21.1"
@@ -24,6 +28,7 @@
     "@types/react-dom": "^19.2.2",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
+    "@types/sqlite3": "^3.1.11",
     "@vitejs/plugin-react": "^5.0.4"
   }
 }
