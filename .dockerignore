@@ -1,0 +1,7 @@
+Dockerfile
+.DS_Store
+.env
+bun.lockb
+README.md
+serviceAccount.json
+node_modules/

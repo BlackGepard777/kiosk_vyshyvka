@@ -3,7 +3,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import Page from "./Page.tsx"
 import HelloPage from "./pages/HelloPage.tsx";
-import CategoriesPage from "./pages/CategoriesPage.tsx";
+import { VideoPage } from "./pages/VideoPage.tsx";
 
 
 const router = createBrowserRouter([
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/categories",
-    element: <CategoriesPage />
+    element: <VideoPage />
   }
 ]);
 
