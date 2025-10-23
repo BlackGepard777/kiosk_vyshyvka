@@ -13,5 +13,5 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/vite.config.ts .
 COPY --from=builder /app/src/server ./src/server
 COPY --from=builder /app/src/shared ./src/shared
-# COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/dist ./dist
 CMD ["npx", "tsx", "src/server/main.ts"]
