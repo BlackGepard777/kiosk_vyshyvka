@@ -50,29 +50,11 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
       onClick={handleClose}
     >
       <div className="video-modal__content" onClick={(e) => e.stopPropagation()}>
-        <div className="video-modal__controls">
-          <button 
-            className="video-modal__button video-modal__button--fullscreen"
-            onClick={toggleFullscreen}
-            title={isFullscreen ? 'Війти в повноекранний режим' : 'Повноекранний режим'}
-          >
-            {isFullscreen ? <Minimize size={24} /> : <Maximize size={24} />}
-          </button>
-          <button 
-            className="video-modal__button video-modal__button--close"
-            onClick={handleClose}
-            title="Закрити"
-          >
-            <X size={24} />
-          </button>
-        </div>
-
         <div className="video-wrapper">
           <iframe
-            src={`https://www.youtube.com/embed/${video.youtubeId}?controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&fs=0&disablekb=1`}
+            src={`${video.src}`}
             allow="autoplay; encrypted-media"
             allowFullScreen={false}
-            title={video.title}
           />
 
           <div className={`block-logo ${isFullscreen ? 'block-logo--fullscreen' : ''}`}></div>
@@ -80,9 +62,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
           <div className={`block-actions ${isFullscreen ? 'block-actions--fullscreen' : ''}`}></div>
         </div>
 
-        {!isFullscreen && (
-          <h3 className="video-modal__title">{video.title}</h3>
-        )}
+        
       </div>
     </div>
   );

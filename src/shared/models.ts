@@ -1,13 +1,13 @@
 export type Video = {
   id: string;
   title: string;
-  youtubeId: string;
+  src: string;
   image?: string;
-  category: 'tutorials' | 'reviews';
+  category: 'artistic_work' | 'krembivska_embroidery';
   description: string;
 }
 
-export type Category = 'all' | 'tutorials' | 'reviews';
+export type Category = 'all' | 'artistic_work' | 'krembivska_embroidery';
 
 export type CategoryOption = {
   id: Category;

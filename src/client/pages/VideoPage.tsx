@@ -4,67 +4,48 @@ import { VideoGrid } from '../components/VideoGrid';
 import { VideoModal } from '../components/VideoModal';
 import { Video, Category, CategoryOption } from '../../shared/models';
 import './VideoPage.css'
-
 const MOCK_VIDEOS: Video[] = [
   {
     id: '1',
-    title: 'Мистецтво української вишиванки',
-    youtubeId: 'D3IylubwYxo',
-    image: 'https://img.youtube.com/vi/D3IylubwYxo/mqdefault.jpg',
-    category: 'tutorials',
-    description: 'Історія, символіка та традиції української вишивки',
+    title: 'Художня праця',
+    src: 'videos/1.mp4',
+    image: './assets/image.png',
+    category: 'artistic_work',
+    description: 'Артіль "Художня праця": історія, що оживає у вишивці та зʼєднує покоління',
   },
 
   {
     id: '2',
-    title: 'Мистецтво української вишиванки',
-    youtubeId: 'D3IylubwYxo',
-    image: 'https://img.youtube.com/vi/D3IylubwYxo/mqdefault.jpg',
-    category: 'tutorials',
-    description: 'Історія, символіка та традиції української вишивки',
+    title: 'Микола Антонович Калетнік',
+    src: 'videos/2.mp4',
+    image: './assets/image.png',
+    category: 'artistic_work',
+    description: 'Микола Антонович Калетнік – директор фабрики "Жіноча праця" 1965-1997',
   },
 
   {
     id: '3',
-    title: 'Мистецтво української вишиванки',
-    youtubeId: 'D3IylubwYxo',
-    image: 'https://img.youtube.com/vi/D3IylubwYxo/mqdefault.jpg',
-    category: 'tutorials',
-    description: 'Історія, символіка та традиції української вишивки',
+    title: 'Основні орнаменти клембівської вишивки',
+    src: 'videos/3.mp4',
+    image: './assets/image.png',
+    category: 'krembivska_embroidery',
+    description: 'Основні орнаменти клембівської вишивки',
   },
 
   {
     id: '4',
-    title: 'Мистецтво української вишиванки',
-    youtubeId: 'D3IylubwYxo',
-    image: 'https://img.youtube.com/vi/D3IylubwYxo/mqdefault.jpg',
-    category: 'tutorials',
-    description: 'Історія, символіка та традиції української вишивки',
-  },
-
-  {
-    id: '5',
-    title: 'Мистецтво української вишиванки',
-    youtubeId: 'D3IylubwYxo',
-    image: 'https://img.youtube.com/vi/D3IylubwYxo/mqdefault.jpg',
-    category: 'tutorials',
-    description: 'Історія, символіка та традиції української вишивки',
-  },
-
-  {
-    id: '6',
-    title: 'Мистецтво української вишиванки',
-    youtubeId: 'D3IylubwYxo',
-    image: 'https://img.youtube.com/vi/D3IylubwYxo/mqdefault.jpg',
-    category: 'reviews',
-    description: 'Історія, символіка та традиції української вишивки',
+    title: 'Галина Лялька',
+    src: 'videos/4.mp4',
+    image: './assets/image.png',
+    category: 'artistic_work',
+    description: 'Галина Лялька',
   }
 ];
 
 const CATEGORIES: CategoryOption[] = [
   { id: 'all', label: 'Всі відео' },
-  { id: 'tutorials', label: 'Уроки' },
-  { id: 'reviews', label: 'Огляди' },
+  { id: 'artistic_work', label: 'Художня праця' },
+  { id: 'krembivska_embroidery', label: 'Клембівська вишивка' },
 ];
 
 export const VideoPage: React.FC = () => {
