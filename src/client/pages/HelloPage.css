@@ -92,7 +92,7 @@ main::after {
 .container::before {
     content: '✦';
     position: absolute;
-    top: -50px;
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 70px;

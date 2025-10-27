@@ -4,6 +4,9 @@ import { VideoGrid } from '../components/VideoGrid';
 import { VideoModal } from '../components/VideoModal';
 import { Video, Category, CategoryOption } from '../../shared/models';
 import './VideoPage.css'
+import useInactivityTimeout from '../../hooks/useInactivityTimeout';
+
+
 const MOCK_VIDEOS: Video[] = [
   {
     id: '1',
@@ -49,6 +52,8 @@ const CATEGORIES: CategoryOption[] = [
 ];
 
 export const VideoPage: React.FC = () => {
+    useInactivityTimeout(300, '/');
+
   const [selectedCategory, setSelectedCategory] = useState<Category>('all');
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
 
