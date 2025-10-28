@@ -62,7 +62,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
           <div className={`block-actions ${isFullscreen ? 'block-actions--fullscreen' : ''}`}></div>
         </div>
 
-        
+        <div className='video-modal-title'> *Для виходу клікніть за рамками відео</div>
       </div>
     </div>
   );

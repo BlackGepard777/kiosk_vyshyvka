@@ -258,6 +258,10 @@
   animation: modalFadeIn 0.3s ease-out;
 }
 
+.video-modal-title {
+  margin-top: 50px;
+}
+
 @keyframes modalFadeIn {
   from {
     opacity: 0;
