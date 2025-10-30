@@ -9,9 +9,15 @@
     "build": "vite build"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "firebase": "^12.4.0",
+    "firebase-admin": "^13.5.0",
     "install": "^0.13.0",
     "lucide-react": "^0.546.0",
+    "morgan": "^1.10.1",
     "nodemon": "^3.1.10",
     "npm": "^11.6.2",
     "react": "^19.2.0",
@@ -25,7 +31,12 @@
     "vite-express": "^0.21.1"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
+    "@types/firebase": "^2.4.32",
+    "@types/morgan": "^1.9.10",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@types/react-router": "^5.1.20",

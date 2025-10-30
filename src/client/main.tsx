@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import Page from "./Page.tsx"
 import HelloPage from "./pages/HelloPage.tsx";
 import { VideoPage } from "./pages/VideoPage.tsx";
-import AdminPage from "./pages/AdminPage.tsx"
+import AdminPage from "./admin/AdminPage.tsx"
 
 
 const router = createBrowserRouter([
@@ -16,11 +16,9 @@ const router = createBrowserRouter([
     path: "/categories",
     element: <VideoPage />
   },
-  {
-    path: "/admin",
-    element: <AdminPage/>
-  }
-]);
+],{
+  basename: import.meta.env.VITE_BASE_URL
+});
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

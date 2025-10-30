@@ -1,10 +1,27 @@
 import express, { type NextFunction, type Request, type Response } from "express";
 import ViteExpress from "vite-express";
 import { initDb } from "./db";
+import morgan from "morgan";
+import login from "./login.ts";
+import cookieParser from 'cookie-parser';
+
 
 const app = express();
 
-app.use(express.json());
+if (process.env.NODE_ENV === "production") {
+  app.use(morgan("dev"));
+}
+
+app.use(express.json());  
+app.use(cookieParser()); 
+
+
+app.use("/api", login);
+
+app.get("/admin", (req, res, next) => {
+  if (req.path === "/admin") res.redirect(301, "/admin/");
+  else next();
+});
 
 async function startServer() {
   try {
