@@ -9,7 +9,7 @@ interface VideoCardProps {
 
 export const VideoCard: React.FC<VideoCardProps> = ({ video, onClick }) => (
   <div className="video-card" onClick={() => onClick(video)}>
-    <img src={video.image} alt={video.title} />
+  <img src={video.image || '/assets/image.png'} alt={video.title} />
     <div className="video-card-content">
       <div className="video-card-title">{video.title}</div>
       <div className="video-card-desc">{video.description}</div>
