@@ -1,49 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { CategoryFilter } from '../components/CategoryFilter';
 import { VideoGrid } from '../components/VideoGrid';
 import { VideoModal } from '../components/VideoModal';
 import { Video, Category, CategoryOption } from '../../shared/models';
-import './VideoPage.css'
+import './VideoPage.css';
 import useInactivityTimeout from '../../hooks/useInactivityTimeout';
-
-
-const MOCK_VIDEOS: Video[] = [
-  {
-    id: '1',
-    title: 'Художня праця',
-    src: 'videos/1.mp4',
-    image: './assets/image.png',
-    category: 'artistic_work',
-    description: 'Артіль "Художня праця": історія, що оживає у вишивці та зʼєднує покоління',
-  },
-
-  {
-    id: '2',
-    title: 'Микола Антонович Калетнік',
-    src: 'videos/2.mp4',
-    image: './assets/image.png',
-    category: 'artistic_work',
-    description: 'Микола Антонович Калетнік – директор фабрики "Жіноча праця" 1965-1997',
-  },
-
-  {
-    id: '3',
-    title: 'Основні орнаменти клембівської вишивки',
-    src: 'videos/3.mp4',
-    image: './assets/image.png',
-    category: 'krembivska_embroidery',
-    description: 'Основні орнаменти клембівської вишивки',
-  },
-
-  {
-    id: '4',
-    title: 'Галина Лялька',
-    src: 'videos/4.mp4',
-    image: './assets/image.png',
-    category: 'artistic_work',
-    description: 'Галина Лялька',
-  }
-];
 
 const CATEGORIES: CategoryOption[] = [
   { id: 'all', label: 'Всі відео' },
@@ -52,15 +13,40 @@ const CATEGORIES: CategoryOption[] = [
 ];
 
 export const VideoPage: React.FC = () => {
-    useInactivityTimeout(300, '/');
+  useInactivityTimeout(300, '/');
 
   const [selectedCategory, setSelectedCategory] = useState<Category>('all');
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/admin/videos');
+        if (!response.ok) throw new Error('Помилка завантаження відео');
+        const data: Video[] = await response.json();
+        setVideos(data);
+      } catch (err) {
+        console.error(err);
+        setError('Не вдалося завантажити відео');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchVideos();
+  }, []);
 
   const filteredVideos = useMemo(() => {
-    if (selectedCategory === 'all') return MOCK_VIDEOS;
-    return MOCK_VIDEOS.filter(v => v.category === selectedCategory);
-  }, [selectedCategory]);
+    if (selectedCategory === 'all') return videos;
+    return videos.filter(v => v.category === selectedCategory);
+  }, [selectedCategory, videos]);
+
+  if (loading) return <div className="loading">Завантаження...</div>;
+  if (error) return <div className="error-message">{error}</div>;
 
   return (
     <div className="video-page">
