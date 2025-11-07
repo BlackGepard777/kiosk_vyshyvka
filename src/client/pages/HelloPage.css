@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-main {
+main.hello {
     min-height: 100vh;
     height: 100vh;
     display: flex;
@@ -23,7 +23,7 @@ main {
     overflow: hidden;
 }
 
-main::before {
+main.hello::before {
     content: '';
     position: absolute;
     width: 500px;
@@ -36,7 +36,7 @@ main::before {
     z-index: 0;
 }
 
-main::after {
+main.hello::after {
     content: '';
     position: absolute;
     width: 400px;
@@ -61,7 +61,7 @@ main::after {
     }
 }
 
-.container {
+main.hello .container {
     position: relative;
     z-index: 2;
     text-align: center;
@@ -89,7 +89,7 @@ main::after {
     }
 }
 
-.container::before {
+main.hello .container::before {
     content: '✦';
     position: absolute;
     top: -25px;
@@ -119,7 +119,7 @@ main::after {
     }
 }
 
-h1 {
+main.hello h1 {
     font-family: 'Georgia', serif;
     font-size: 3.5rem;
     margin-bottom: 1.5rem;

@@ -7,7 +7,7 @@ import './Page.css'
 function Page({children}: {children?: React.ReactNode}) {
   return (
     <>
-      <main>
+      <main className='main-front'>
         {children}
       </main>
     </>

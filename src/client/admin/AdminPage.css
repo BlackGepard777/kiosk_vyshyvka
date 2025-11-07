@@ -19,7 +19,7 @@
   z-index: 0;
 }
 
-.admin-sidebar {
+.admin-page .admin-sidebar {
   width: 260px;
   background: rgba(10, 15, 30, 0.85);
   backdrop-filter: blur(10px);
@@ -33,12 +33,12 @@
   box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
 }
 
-.admin-sidebar-header {
+.admin-page .admin-sidebar-header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.admin-sidebar-header h2 {
+.admin-page .admin-sidebar-header h2 {
   font-size: 1.8rem;
   background: linear-gradient(135deg, #f5deb3 0%, #deb887 50%, #f5deb3 100%);
   background-clip: text;
@@ -46,14 +46,14 @@
   margin-bottom: 15px;
 }
 
-.admin-avatar {
+.admin-page .admin-avatar {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.admin-avatar img,
-.default-avatar {
+.admin-page .admin-avatar img,
+.admin-page .default-avatar {
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -63,15 +63,15 @@
   transition: transform 0.4s ease;
 }
 
-.admin-avatar img:hover {
+.admin-page .admin-avatar img:hover {
   transform: scale(1.05);
 }
 
-.logout {
+.admin-page .logout {
   text-decoration: none;
 }
 
-.default-avatar {
+.admin-page .default-avatar {
   background: rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: center;
@@ -81,14 +81,14 @@
   font-size: 1.2rem;
 }
 
-.admin-nav {
+.admin-page .admin-nav {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 40px;
 }
 
-.admin-nav a {
+.admin-page .admin-nav a {
   color: #e8d5c4;
   text-decoration: none;
   padding: 12px 18px;
@@ -98,20 +98,20 @@
   border: 1px solid transparent;
 }
 
-.admin-nav a:hover {
+.admin-page .admin-nav a:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(220, 20, 60, 0.3);
   transform: translateX(4px);
 }
 
-.admin-nav a.active {
+.admin-page .admin-nav a.active {
   background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
   color: #fff8e7;
   box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
   transform: translateX(4px);
 }
 
-.admin-content {
+.admin-page .admin-content {
   flex: 1;
   padding: 60px;
   position: relative;
@@ -120,14 +120,14 @@
   overflow-y: auto;
 }
 
-.admin-header {
+.admin-page .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
 }
 
-.admin-header h1 {
+.admin-page .admin-header h1 {
   font-size: 2.6rem;
   font-weight: 800;
   background: linear-gradient(135deg, #f5deb3 0%, #deb887 50%, #f5deb3 100%);
@@ -136,7 +136,7 @@
   text-shadow: 0 4px 20px rgba(245, 222, 179, 0.2);
 }
 
-.btn {
+.admin-page .btn {
   display: inline-block;
   padding: 12px 22px;
   border-radius: 10px;
@@ -147,18 +147,18 @@
   transition: all 0.3s ease;
 }
 
-.btn-primary {
+.admin-page .btn-primary {
   background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
   color: #fff8e7;
   box-shadow: 0 6px 25px rgba(220, 20, 60, 0.4);
 }
 
-.btn-primary:hover {
+.admin-page .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 35px rgba(220, 20, 60, 0.6);
 }
 
-.videos-table {
+.admin-page .videos-table {
   background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(10px);
   border-radius: 16px;
@@ -166,13 +166,13 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-table {
+.admin-page table {
   width: 100%;
   border-collapse: collapse;
   color: #e8d5c4;
 }
 
-th {
+.admin-page th {
   text-align: left;
   font-size: 1rem;
   text-transform: uppercase;
@@ -182,44 +182,44 @@ th {
   padding: 12px 20px;
 }
 
-tr {
-  height: 106px; /* Фіксована висота рядка */
+.admin-page tr {
+  height: 106px; 
 }
 
-td {
+.admin-page td {
   padding: 18px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   vertical-align: middle;
-  line-height: 70px; /* Висота контенту */
+  line-height: 70px; 
 }
 
-th:nth-child(1), td:nth-child(1) { 
+.admin-page th:nth-child(1), td:nth-child(1) { 
   width: 150px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 } 
 
-th:nth-child(2), td:nth-child(2) { 
+.admin-page th:nth-child(2), td:nth-child(2) { 
   width: 100px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 } 
 
-th:nth-child(3), td:nth-child(3) { 
+.admin-page th:nth-child(3), td:nth-child(3) { 
   width: calc(100% - 810px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 } 
 
-th:nth-child(4), td:nth-child(4) { 
+.admin-page th:nth-child(4), td:nth-child(4) { 
   width: 280px;
   text-align: right;
 } 
 
-.video-thumbnail {
+.admin-page .video-thumbnail {
   width: 120px;
   height: 70px;
   border-radius: 8px;
@@ -229,11 +229,11 @@ th:nth-child(4), td:nth-child(4) {
   transition: transform 0.3s ease;
 }
 
-.video-thumbnail:hover {
+.admin-page .video-thumbnail:hover {
   transform: scale(1.05);
 }
 
-.video-thumbnail-placeholder {
+.admin-page .video-thumbnail-placeholder {
   width: 120px;
   height: 70px;
   border-radius: 8px;
@@ -245,7 +245,7 @@ th:nth-child(4), td:nth-child(4) {
   color: #dc143c;
 }
 
-.actions {
+.admin-page .actions {
   display: flex;
   gap: 20px;
   justify-content: flex-end;
@@ -253,7 +253,7 @@ th:nth-child(4), td:nth-child(4) {
   margin-left: auto;
 }
 
-.btn-small {
+.admin-page .btn-small {
   padding: 8px 14px;
   font-size: 0.9rem;
   border-radius: 8px;
@@ -261,42 +261,42 @@ th:nth-child(4), td:nth-child(4) {
   text-align: center;
 }
 
-.btn-edit {
+.admin-page .btn-edit {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(245, 222, 179, 0.2);
   color: #f5deb3;
   width: 120px;
 }
 
-.btn-edit:hover {
+.admin-page .btn-edit:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(220, 20, 60, 0.3);
   transform: translateY(-2px);
 }
 
-.btn-delete {
+.admin-page .btn-delete {
   background: rgba(220, 20, 60, 0.2);
   border: 1px solid rgba(220, 20, 60, 0.4);
   color: #ffbfbf;
   width: 120px;
 }
 
-.btn-delete:hover {
+.admin-page .btn-delete:hover {
   background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
   color: #fff8e7;
   transform: translateY(-2px);
   box-shadow: 0 6px 25px rgba(220, 20, 60, 0.4);
 }
 
-.loading,
-.error-message,
-.empty-state {
+.admin-page .loading,
+.admin-page .error-message,
+.admin-page .empty-state {
   text-align: center;
   padding: 50px;
   font-size: 1.2rem;
   color: #f5deb3;
 }
 
-.error-message {
+.admin-page .error-message {
   color: #ff8888;
 }
