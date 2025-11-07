@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon -w src/server -x tsx src/server/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build",
     "prod": "vite build && cross-env NODE_ENV=production tsx src/server/main.ts"
   },
   "dependencies": {
