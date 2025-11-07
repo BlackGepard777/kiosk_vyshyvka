@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function HelloPage() {
     return (
-        <main>
+        <main className='hello'>
             <div className="container">
                 <h1>Клембівська фабрика Художніх виробів «ЖІНОЧА ПРАЦЯ»</h1>    
                 <p className="subtitle" data-i18n="welcome">Ласкаво просимо до віртуального музею українського орнаменту.</p>

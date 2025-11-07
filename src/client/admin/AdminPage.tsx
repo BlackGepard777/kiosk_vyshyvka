@@ -68,7 +68,7 @@ export function AdminPage() {
         </div>
       </aside>
 
-      <main className="admin-content">
+      <div className="admin-content">
         <div className="admin-header">
           <h1>Управління відео</h1>
           <Link to="/admin/videos/new" className="btn btn-primary">
@@ -128,7 +128,7 @@ export function AdminPage() {
             </table>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

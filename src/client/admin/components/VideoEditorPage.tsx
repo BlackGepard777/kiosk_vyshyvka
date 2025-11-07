@@ -133,7 +133,7 @@ export function VideoEditorPage() {
     <div className="video-editor-page">
       <div className="editor-header">
         <h1>{isEditMode ? 'Редагувати відео' : 'Додати нове відео'}</h1>
-        <button onClick={() => navigate('/admin')} className="btn btn-secondary">
+        <button onClick={() => navigate('/admin')} className="editor-btn editor-btn-secondary">
           ← Назад
         </button>
       </div>
@@ -207,7 +207,7 @@ export function VideoEditorPage() {
                     setSaving(false);
                   }
                 }}
-                className="btn btn-small btn-delete"
+                className="editor-btn editor-btn-small editor-btn-delete"
                 disabled={saving}
               >
                 Видалити зображення
@@ -220,7 +220,7 @@ export function VideoEditorPage() {
               <button 
                 type="button" 
                 onClick={() => setImageFile(null)}
-                className="btn btn-small btn-delete"
+                className="editor-btn editor-btn-small editor-btn-delete"
               >
                 Скасувати вибір
               </button>
@@ -241,7 +241,7 @@ export function VideoEditorPage() {
           >
             <option value="">Оберіть категорію</option>
             <option value="artistic_work">Художні роботи</option>
-            <option value="krembivska_embroidery">Кремпівська вишивка</option>
+            <option value="krembivska_embroidery">Клембівська вишивка</option>
           </select>
         </div>
 
@@ -258,13 +258,13 @@ export function VideoEditorPage() {
         </div>
 
         <div className="form-actions">
-          <button type="submit" className="btn btn-primary" disabled={saving}>
+          <button type="submit" className="editor-btn editor-btn-primary" disabled={saving}>
             {saving ? 'Збереження...' : isEditMode ? 'Зберегти зміни' : 'Створити відео'}
           </button>
           <button
             type="button"
             onClick={() => navigate('/admin')}
-            className="btn btn-secondary"
+            className="editor-btn editor-btn-secondary"
             disabled={saving}
           >
             Скасувати
