@@ -6,6 +6,7 @@ import morgan from "morgan";
 import login from "./login.ts";
 import cookieParser from 'cookie-parser';
 import videoRoutes from './admin-api';
+import subtitlesRouter from "./subtitles-api.ts"
 
 
 
@@ -42,6 +43,8 @@ app.get("/admin", (req, res, next) => {
 });
 
 app.use('/api/admin', videoRoutes);
+
+app.use(subtitlesRouter);
 
 async function startServer() {
   try {

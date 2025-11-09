@@ -25,10 +25,24 @@ export const VideoPage: React.FC = () => {
     const fetchVideos = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/admin/videos');
-        if (!response.ok) throw new Error('Помилка завантаження відео');
-        const data: Video[] = await response.json();
-        setVideos(data);
+        
+        const configResponse = await fetch('/api/subtitles/config');
+        if (!configResponse.ok) throw new Error('Помилка завантаження конфігу');
+        const configData = await configResponse.json();
+        
+        const videosResponse = await fetch('/api/admin/videos');
+        if (!videosResponse.ok) throw new Error('Помилка завантаження відео');
+        const apiVideos: Video[] = await videosResponse.json();
+        
+        const videosWithSubtitles = apiVideos.map(video => {
+          const configVideo = configData.videos.find((v: any) => v.id === video.id);
+          return {
+            ...video,
+            subtitles: configVideo?.subtitles || []
+          };
+        });
+        
+        setVideos(videosWithSubtitles);
       } catch (err) {
         console.error(err);
         setError('Не вдалося завантажити відео');
