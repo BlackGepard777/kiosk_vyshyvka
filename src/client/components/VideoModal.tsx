@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Video } from '../../shared/models';
 import { Maximize, Minimize, X } from 'lucide-react';
 
@@ -9,7 +9,8 @@ interface VideoModalProps {
 
 export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const [isFullscreen, setIsFullscreen] = React.useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -19,6 +20,20 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      const timer = setTimeout(() => {
+        const tracks = videoRef.current?.textTracks;
+        if (tracks && tracks.length > 0) {
+          for (let i = 0; i < tracks.length; i++) {
+            tracks[i].mode = 'showing';
+          }
+        }
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [video]);
 
   const toggleFullscreen = async () => {
     if (!modalRef.current) return;
@@ -42,6 +57,9 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
   };
 
   if (!video) return null;
+
+  const isVideoFile = /\.(mp4|webm|ogg)$/i.test(video.src);
+  const subtitles = video?.subtitles || [];
   
   return (
     <div 
@@ -51,11 +69,38 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
     >
       <div className="video-modal__content" onClick={(e) => e.stopPropagation()}>
         <div className="video-wrapper">
-          <iframe
-            src={`${video.src}`}
-            allow="autoplay; encrypted-media"
-            allowFullScreen={false}
-          />
+          {isVideoFile ? (
+            <video
+              ref={videoRef}
+              src={video.src}
+              controls
+              crossOrigin="anonymous"
+              controlsList="nodownload nopictureinpicture"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%'
+              }}
+            >
+              {subtitles.map((subtitle) => (
+                <track
+                  key={subtitle.language}
+                  kind="subtitles"
+                  src={subtitle.src}
+                  srcLang={subtitle.language}
+                  label={subtitle.label}
+                />
+              ))}
+            </video>
+          ) : (
+            <iframe
+              src={`${video.src}`}
+              allow="autoplay; encrypted-media"
+              allowFullScreen={false}
+            />
+          )}
 
           <div className={`block-logo ${isFullscreen ? 'block-logo--fullscreen' : ''}`}></div>
           <div className={`block-title ${isFullscreen ? 'block-title--fullscreen' : ''}`}></div>
