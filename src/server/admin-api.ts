@@ -1,9 +1,11 @@
 import { Router, type Request, type Response } from 'express';
 import crypto from 'crypto';
 import multer from 'multer';
-import path from 'path';
+import path, { join, resolve } from 'path';
 import { videos } from './db';
 import type { Video } from '../shared/models';
+import ffmpeg from 'fluent-ffmpeg';
+import { rejects } from 'assert';
 
 const router = Router();
 
@@ -78,6 +80,25 @@ router.post('/videos', upload.fields([
       category,
       description: req.body.description || ''
     };
+
+    if (files?.video) {
+      const videoPath = files.video[0].path;
+      const previewFilename = `${files.video[0].filename}.jpg`;
+      const previewFolder = path.join(process.cwd(), 'data/uploads/previews');
+
+      await new Promise ((resolve, reject) => {
+        ffmpeg(videoPath)
+          .screenshots ({
+            timestamps: ['5'],
+            filename: previewFilename,
+            folder: previewFolder,
+            size: '320x240'
+          })
+          .on ('end', resolve)
+          .on ('error', reject);
+      });
+      video.preview = `/uploads/previews/${previewFilename}`;
+    } 
 
     await videos.create(video);
     res.status(201).json(video);

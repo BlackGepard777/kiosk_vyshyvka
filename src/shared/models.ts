@@ -3,6 +3,7 @@ export type Video = {
   title: string;
   src: string;
   image?: string;
+  preview?: string;
   category: 'artistic_work' | 'krembivska_embroidery';
   description: string;
   subtitles?: Subtitle[];

@@ -1,8 +1,8 @@
 .video-editor-page {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f3460 100%);
-  color: #f1e3c6;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #E8D5C4;
   font-family: 'Georgia', serif;
   padding: 80px 60px;
   overflow-x: hidden;
@@ -13,10 +13,34 @@
   position: absolute;
   inset: 0;
   background-image:
-    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(220, 20, 60, 0.03) 40px, rgba(220, 20, 60, 0.03) 80px),
-    repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.015) 40px, rgba(255, 255, 255, 0.015) 80px);
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(139, 0, 0, 0.03) 35px, rgba(139, 0, 0, 0.03) 70px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(139, 0, 0, 0.02) 35px, rgba(139, 0, 0, 0.02) 70px);
   opacity: 0.4;
   z-index: 0;
+}
+
+.video-editor-page::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(220, 20, 60, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -200px;
+  right: -200px;
+  animation: pulse 10s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.9;
+  }
 }
 
 .editor-header {
@@ -29,120 +53,175 @@
 }
 
 .editor-header h1 {
-  font-size: 2.8rem;
+  font-size: 3.8rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #f5deb3 0%, #deb887 50%, #f5deb3 100%);
+  background: linear-gradient(135deg, #F5DEB3 0%, #DEB887 50%, #F5DEB3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-bottom: 0;
   letter-spacing: 2px;
-  text-shadow: 0 4px 20px rgba(245, 222, 179, 0.2);
+  animation: titleFadeIn 1s ease-out;
+  filter: drop-shadow(0 4px 20px rgba(245, 222, 179, 0.2));
+}
+
+@keyframes titleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .video-editor-page .editor-btn {
   display: inline-block;
-  padding: 14px 28px; 
+  padding: 14px 32px;
   border-radius: 12px;
   font-weight: 700;
-  font-size: 1.05rem; 
+  font-size: 1.05rem;
   cursor: pointer;
   border: none;
-  transition: all 0.2s ease;
-  min-width: 160px; 
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 160px;
 }
 
 .video-editor-page .editor-btn-primary {
-  background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
-  color: #fff8e7;
+  background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+  color: #FFF8E7;
   box-shadow: 0 6px 25px rgba(220, 20, 60, 0.4);
-  min-width: 200px; 
+  min-width: 200px;
 }
 
 .video-editor-page .editor-btn-primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 10px 35px rgba(220, 20, 60, 0.6);
 }
 
 .video-editor-page .editor-btn-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(245, 222, 179, 0.25);
-  color: #f5deb3;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(220, 20, 60, 0.3);
+  color: #F5DEB3;
 }
 
 .video-editor-page .editor-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(245, 222, 179, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(220, 20, 60, 0.6);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
 }
 
 .video-form {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 40px 50px;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(245, 222, 179, 0.1);
   position: relative;
   z-index: 1;
 }
 
 .form-group {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   display: flex;
   flex-direction: column;
 }
 
 .form-group label {
   font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #f5deb3;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: #F5DEB3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
 }
 
 .required {
-  color: #dc143c;
+  color: #DC143C;
   margin-left: 4px;
 }
 
 input[type="text"],
 input[type="file"],
-select,
 textarea {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(245, 222, 179, 0.15);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(220, 20, 60, 0.3);
+  border-radius: 12px;
   padding: 14px 16px;
   font-size: 1rem;
-  color: #f5deb3;
+  color: #F5DEB3;
+  font-family: 'Georgia', serif;
   outline: none;
   transition: all 0.3s ease;
 }
 
+select {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(220, 20, 60, 0.3);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #F5DEB3;
+  font-family: 'Georgia', serif;
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+select option {
+  background: #1a1a2e;
+  color: #F5DEB3;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: 'Georgia', serif;
+}
+
+select option:hover {
+  background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+  color: #FFF8E7;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(245, 222, 179, 0.5);
+}
+
 input::file-selector-button {
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(245, 222, 179, 0.2);
-  color: #f5deb3;
-  padding: 6px 14px;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  color: #F5DEB3;
+  padding: 8px 16px;
   border-radius: 8px;
-  margin-right: 10px;
+  margin-right: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 input::file-selector-button:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+  border-color: transparent;
+  color: #FFF8E7;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: rgba(220, 20, 60, 0.4);
-  box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+  border-color: rgba(220, 20, 60, 0.6);
+  box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
 }
 
 textarea {
   resize: vertical;
   line-height: 1.6;
+  min-height: 120px;
 }
 
 .image-preview {
@@ -154,14 +233,14 @@ textarea {
 .image-preview img {
   max-width: 240px;
   border-radius: 12px;
-  border: 2px solid rgba(245, 222, 179, 0.15);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(220, 20, 60, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .file-info {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 0.9rem;
-  color: #d4c5b9;
+  color: #D4C5B9;
   opacity: 0.85;
   font-style: italic;
 }
@@ -169,31 +248,34 @@ textarea {
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 20px;
-  margin-top: 30px;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(245, 222, 179, 0.1);
 }
 
 .video-editor-page .editor-btn-small {
-  padding: 8px 14px;
-  font-size: 0.9rem;
-  border-radius: 8px;
-  min-width: 120px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border-radius: 10px;
+  min-width: 140px;
 }
 
 .video-editor-page .editor-btn-delete {
-  background: rgba(220, 20, 60, 0.2);
-  border: 1px solid rgba(220, 20, 60, 0.4);
-  color: #ffbfbf;
+  background: rgba(220, 20, 60, 0.15);
+  border: 2px solid rgba(220, 20, 60, 0.4);
+  color: #F5DEB3;
 }
 
 .video-editor-page .editor-btn-delete:hover {
-  background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
-  color: #fff8e7;
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+  color: #FFF8E7;
+  border-color: transparent;
+  transform: translateY(-3px);
   box-shadow: 0 6px 25px rgba(220, 20, 60, 0.4);
 }
 
 .video-editor-page .editor-btn[disabled] {
-  opacity: 0.6;
+  opacity: 0.5;
   pointer-events: none;
 }

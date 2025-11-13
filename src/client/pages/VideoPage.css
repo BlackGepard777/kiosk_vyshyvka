@@ -165,6 +165,7 @@
   position: relative;
   max-width: 1300px;
   margin: 0 auto;
+  grid-auto-rows: 1fr;
 }
 
 .video-card {
@@ -177,6 +178,9 @@
   cursor: pointer;
   border: 1px solid rgba(245, 222, 179, 0.1);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .video-card::before {
@@ -206,6 +210,7 @@
   position: relative;
   z-index: 1;
   transition: transform 0.4s ease;
+  flex-shrink: 0;
 }
 
 .video-card:hover img {
@@ -217,6 +222,11 @@
   position: relative;
   z-index: 1;
   background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+  min-height: 0;
 }
 
 .video-card-category {
@@ -226,23 +236,29 @@
   letter-spacing: 1px;
   font-weight: 700;
   text-shadow: 0 2px 8px rgba(220, 20, 60, 0.4);
+  flex-shrink: 0;
 }
 
 .video-card-title {
   font-weight: 700;
   font-size: 1.3rem;
   color: #F5DEB3;
-  margin-top: 10px;
-  line-height: 1.5;
+  line-height: 1.4;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  max-height: 2.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .video-card-desc {
   color: #D4C5B9;
   font-size: 0.95rem;
-  margin-top: 10px;
   line-height: 1.6;
   opacity: 0.9;
+  max-height: 4.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
 }
 
 .video-modal {

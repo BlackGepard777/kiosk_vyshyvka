@@ -30,6 +30,7 @@ async function initDb() {
         title TEXT NOT NULL,
         src TEXT NOT NULL,
         image TEXT,
+        preview TEXT,
         category TEXT NOT NULL,
         description TEXT
       )
@@ -68,6 +69,7 @@ function getProjectVideos(): Video[] {
       title: id,
       src: `/uploads/videos/${file}`, 
       image: undefined, 
+      preview: undefined,
       category: "artistic_work", 
       description: ""
     };
@@ -83,8 +85,8 @@ async function importVideosFromFolder() {
     const exists = await db.get("SELECT id FROM videos WHERE id = ?", [video.id]);
     if (!exists) {
       await db.run(
-        `INSERT INTO videos (id, title, src, image, category, description) VALUES (?, ?, ?, ?, ?, ?)`,
-        [video.id, video.title, video.src, video.image ?? null, video.category, video.description]
+        `INSERT INTO videos (id, title, src, image, preview, category, description) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [video.id, video.title, video.src, video.image ?? null, video.preview ?? null, video.category, video.description]
       );
       console.log(`✅ Додано в базу: ${video.title}`);
     }
@@ -106,8 +108,8 @@ const videos = {
   async create(video: Video): Promise<Video> {
     const db = getDbInstance();
     await db.run(
-      `INSERT INTO videos (id, title, src, image, category, description) VALUES (?, ?, ?, ?, ?, ?)`,
-      [video.id, video.title, video.src, video.image ?? null, video.category, video.description]
+      `INSERT INTO videos (id, title, src, image, preview, category, description) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [video.id, video.title, video.src, video.image ?? null, video.preview ?? null, video.category, video.description]
     );
     return video;
   },
@@ -115,8 +117,8 @@ const videos = {
   async update(video: Video): Promise<Video> {
     const db = getDbInstance();
     await db.run(
-      `UPDATE videos SET title = ?, src = ?, image = ?, category = ?, description = ? WHERE id = ?`,
-      [video.title, video.src, video.image ?? null, video.category, video.description, video.id]
+      `UPDATE videos SET title = ?, src = ?, image = ?, preview = ?, category = ?, description = ? WHERE id = ?`,
+      [video.title, video.src, video.image ?? null,video.preview ?? null, video.category, video.description, video.id]
     );
     return video;
   },
